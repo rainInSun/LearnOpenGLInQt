@@ -20,7 +20,9 @@ set(CMAKE_AUTORCC ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 
-add_subdirectory(Hello_Triangle)
+add_subdirectory(Hello_Triangle_01)
+add_subdirectory(GLSL_01)
+add_subdirectory(GLSL_02)
 
 # cmake like this
 # cmake -G"Visual Studio 15 2017" -AWin32 -BDebug -Hcode -DCMAKE_BUILD_TYPE=Debug -DQT_INSTALL_PATH="F:\Qt\5.12.5\msvc2017\lib\cmake\Qt5"
