@@ -5,6 +5,9 @@
 #include <QOpenGLFunctions_3_3_Core>
 #include <QElapsedTimer>
 #include <QTimer>
+#include <memory>
+
+class Shader;
 
 class GLSL_01 : public QOpenGLWidget
 {
@@ -21,10 +24,12 @@ protected:
 private:
     unsigned int m_VAO = 0;
     unsigned int m_VBO = 0;
-    unsigned int m_program = 0;
+    //unsigned int m_program = 0;
     bool m_bInit = false;
     QOpenGLFunctions_3_3_Core *m_funcs = nullptr;
     QElapsedTimer m_elapsedTimer;
     QTimer m_timer;
+    
+    std::unique_ptr<Shader> m_shader;
 };
 #endif

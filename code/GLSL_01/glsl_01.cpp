@@ -1,4 +1,5 @@
 ﻿#include "glsl_01.h"
+#include "shader.h"
 #include <iostream>
 #include <QDebug>
 
@@ -45,7 +46,7 @@ void GLSL_01::initializeGL()
     if (!m_funcs)
         return;
 
-    // 顶点着色器
+    /*// 顶点着色器
     unsigned int vertexShader = m_funcs->glCreateShader(GL_VERTEX_SHADER);
     m_funcs->glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
     m_funcs->glCompileShader(vertexShader);
@@ -84,6 +85,10 @@ void GLSL_01::initializeGL()
     // 链接成功后，保留可以删除着色器
     m_funcs->glDeleteShader(vertexShader);
     m_funcs->glDeleteShader(fragmentShader);
+    */
+    Shader *pShader = new Shader(pContext);
+    m_shader.reset(pShader);
+    m_shader->compileSourceCode(vertexShaderSource, fragmentShaderSource);
 
     // 三角形顶点
     // ------------------------------------------------------------------
@@ -116,14 +121,17 @@ void GLSL_01::paintGL()
     m_funcs->glClear(GL_COLOR_BUFFER_BIT);
 
     // 指定着色器
-    m_funcs->glUseProgram(m_program);
+    m_shader->use();
     // 更新uniform颜色
     qint64 time = m_elapsedTimer.elapsed();
     float timeValue = (float)time / 1000.0;
     float greenValue = sin(timeValue) / 2.0f + 0.5f;
     qDebug() << "greenValue: " << greenValue;
+    /*
     int vertexColorLocation = m_funcs->glGetUniformLocation(m_program, "ourColor");
     m_funcs->glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+    */
+    m_shader->setVector4f("ourColor", 0.0f, greenValue, 0.0f, 1.0f);
 
     // 绑定VAO
     m_funcs->glBindVertexArray(m_VAO);
