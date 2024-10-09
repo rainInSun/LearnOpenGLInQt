@@ -17,14 +17,16 @@ endif()
 set(Qt5_DIR ${QT_INSTALL_PATH})
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Widgets OpenGL REQUIRED)
 
 
 add_subdirectory(Hello_Triangle_01)
 add_subdirectory(GLSL_01)
 add_subdirectory(GLSL_02)
 add_subdirectory(CoolProgress)
+add_subdirectory(Texture_01)
 
 # cmake like this
 # cmake -G"Visual Studio 15 2017" -AWin32 -BDebug -Hcode -DCMAKE_BUILD_TYPE=Debug -DQT_INSTALL_PATH="F:\Qt\5.12.5\msvc2017\lib\cmake\Qt5"
 # msbuild /m LearnOpenGLInQt.sln /p:Platform="Win32" /p:Configuration="Debug"
+# cmake --install . --config Debug
