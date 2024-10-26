@@ -1,0 +1,23 @@
+﻿static const char *fadeVertexSource = "#version 330 core\n"
+	"layout (location = 0) in vec3 aPos;\n"
+	"layout(location = 1) in vec2 aTexCoord;\n"
+	"out vec2 texCoord;\n"
+	"void main()\n"
+	"{\n"
+	"	texCoord = aTexCoord;\n"
+	"	gl_Position = vec4(aPos, 1.0);\n"
+	"}\0";
+
+static const char *fadeFragmentSource = "#version 330 core\n"
+	"out vec4 fragColor;\n"
+	"in vec2 texCoord;\n"
+	"uniform sampler2D texture0;\n"
+	"uniform sampler2D texture1;\n"
+	"uniform float progress;\n"
+	"void main()\n"
+	"{\n"
+	"	vec4 texColor1 = texture(texture0, texCoord);\n"
+	"	vec4 texColor2 = texture(texture1, texCoord);\n"
+	"	vec4 resColor = mix(texColor1, texColor2, progress);\n"
+	"	fragColor = resColor;\n"
+	"}\0";

@@ -5,6 +5,7 @@ ProgressExample::ProgressExample(QWidget *parent)
 	: QWidget(parent)
 {
 	setFixedSize(600, 200);
+	setWindowTitle("LearnOpenGLInQt-CoolProgress");
 
 	m_progressRing_1 = new CoolProgress(false, CoolProgress::Ring_1, 200, 200, this);
 	m_progressRing_1->move(QPoint(0, 0));
