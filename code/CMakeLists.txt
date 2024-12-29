@@ -27,6 +27,7 @@ add_subdirectory(CoolProgress)
 add_subdirectory(Texture_01)
 add_subdirectory(SceneTransition)
 add_subdirectory(CoordinateSystem_01)
+add_subdirectory(OpenGLCamera_01)
 
 # cmake like this
 # cmake -G"Visual Studio 15 2017" -AWin32 -BDebug -Hcode -DCMAKE_BUILD_TYPE=Debug -DQT_INSTALL_PATH="F:\Qt\5.12.5\msvc2017\lib\cmake\Qt5"
